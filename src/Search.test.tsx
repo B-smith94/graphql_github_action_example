@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent} from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing'
 import SearchComponent from './Components/SearchComponent';
 import { GET_CHARACTER_LOCATIONS } from './queries/Queries';
