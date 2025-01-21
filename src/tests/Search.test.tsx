@@ -59,6 +59,9 @@ describe('SearchComponent', () => {
                 <SearchComponent />
             </MockedProvider>
         );
+
+         const input: HTMLInputElement = screen.getByPlaceholderText("Search...") as HTMLInputElement;
+         fireEvent.change(input, { target: { value: 'test' } })
          fireEvent.click(screen.getByRole('button', { name: 'Search'}));
          await waitFor(() => {
             expect(screen.getByText('Test Location')).toBeInTheDocument();
