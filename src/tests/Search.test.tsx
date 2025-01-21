@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing'
-import SearchComponent from './Components/SearchComponent';
-import { GET_CHARACTER_LOCATIONS } from './queries/Queries';
+import SearchComponent from '../Components/SearchComponent';
+import { GET_CHARACTER_LOCATIONS } from '../queries/Queries';
 import '@testing-library/jest-dom'
 
 const mocks = [
@@ -52,4 +52,16 @@ describe('SearchComponent', () => {
 
         expect(input.value).toBe('test');
     })
+    // test 3 (module 16 lesson 1 assignment, task 3)
+    it('renders the location name when the data is fetched', async () => {
+        render(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <SearchComponent />
+            </MockedProvider>
+        );
+         fireEvent.click(screen.getByRole('button', { name: 'Search'}));
+         await waitFor(() => {
+            expect(screen.getByText('Test Location')).toBeInTheDocument();
+         });
+    });
 })
