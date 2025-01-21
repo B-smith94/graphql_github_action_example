@@ -2,8 +2,8 @@
 name: React CI
 
 on:
-    push:
-        branches: [main, master]
+    push:  #task 4
+        branches: [main, master, features/tests]
 
 jobs:
     build:
@@ -41,7 +41,7 @@ jobs:
               node-version: '20'
           
           - name: Install dependencies
-            run: npm  install
+            run: npm ci
 
           - name: Run Tests
             run: npm test
